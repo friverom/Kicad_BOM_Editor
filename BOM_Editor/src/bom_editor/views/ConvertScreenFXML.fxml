@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bom_editor.controllers.ConvertScreenFXMLController">
+   <children>
+      <SplitPane dividerPositions="0.9" layoutX="494.0" layoutY="247.0" orientation="VERTICAL" prefHeight="827.0" prefWidth="1197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="740.0" prefWidth="1195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView fx:id="tablelist" prefHeight="740.0" prefWidth="1195.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+                                <columns>
+                                  <TableColumn fx:id="itemCol" prefWidth="75.0" text="Item" />
+                                  <TableColumn fx:id="refCol" prefWidth="279.0" text="Reference" />
+                                    <TableColumn fx:id="descriptionCol" prefWidth="372.0" text="Description" />
+                                    <TableColumn fx:id="packageCol" prefWidth="150.0" text="Package" />
+                                    <TableColumn fx:id="mpnCol" prefWidth="295.0" text="MPN" />
+                                </columns>
+                              </TableView>
+                              <StackPane layoutX="-2.0" prefHeight="40.0" prefWidth="1193.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="KiCad PCB BOM Converter">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <WebView fx:id="webview" layoutX="403.0" layoutY="73.0" prefHeight="366.0" prefWidth="1193.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="275.0" layoutY="-21.0" prefHeight="79.0" prefWidth="1195.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="loadFile" mnemonicParsing="false" onAction="#loadFileAction" text="Load File">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="saveFileBtn" mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                        <Button fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsAction" text="Save As" />
+                        <Button fx:id="createFileBtn" lineSpacing="10.0" mnemonicParsing="false" onAction="#createFileBtn" text="Create File" />
+                     </children>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
