@@ -53,6 +53,17 @@ public class BOM_List {
             return ""+item;
         }
     }
+    
+    private String checkItem(String data){
+        String item="";
+        
+        if(data.indexOf(",")==-1){
+            return cleanItem(data);
+        }
+        else{
+            return data;
+        }
+    }
     /**
      * Edit an Item from the parts lists
      * @param item 
@@ -83,6 +94,11 @@ public class BOM_List {
     public int listSize(){
         return list.size();
     }
+    
+    public void saveAsList(String filename){
+        this.filename=filename;
+        saveList();
+    }
     /**
      * Saves the array list to file
      */
@@ -110,6 +126,34 @@ public class BOM_List {
             Logger.getLogger(BOM_List.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void createSeeedFile(){
+        BufferedWriter output;
+        String line="";
+        Parts item = new Parts();
+        
+        String[] parts = filename.split("\\.");
+        String seeedFile = parts[0]+"_Seeed.csv";
+        
+        try {
+            output= new BufferedWriter(new FileWriter(seeedFile));
+            
+            for(int i=0;i<list.size();i++){
+                item=list.get(i);
+                line="";
+              //  line=line+i+";";
+                line=line+item.getDesignator()+",";
+              //  line=line+item.getPackaging()+";";
+                line=line+item.getQuantity()+",";
+              //  line=line+item.getValue()+";";
+                line=line+item.getMpn();
+                output.write(line+"\n");
+            }
+            output.close();
+        } catch (IOException ex) {
+            Logger.getLogger(BOM_List.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     //This method read the KiCad PCB BOM and creates the array list
     private void createList(){
         BufferedReader input;
@@ -121,7 +165,7 @@ public class BOM_List {
             
             while(line!=null){
                 String[] items=line.split(";");
-                String designator=cleanItem(items[1]);
+                String designator=checkItem(items[1]);
                 String packaging=cleanItem(items[2]);
                 String quantity=cleanItem(items[3]);
                 String description=cleanItem(items[4]);

@@ -10,8 +10,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
- * @author Federico
+ * Class to hold Component parts
+ * @author Federico Rivero
  */
 public class Parts {
     
@@ -47,7 +47,7 @@ public class Parts {
     }
 
     public StringProperty itemNumberProperty() {
-        return mpn;
+        return itemNumber;
     }
     public String getMpn() {
         return mpn.get();

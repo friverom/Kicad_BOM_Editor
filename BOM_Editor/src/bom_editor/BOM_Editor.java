@@ -23,6 +23,7 @@ public class BOM_Editor extends Application {
         
         Scene scene = new Scene(root);
         
+        stage.setTitle("Kicad PCB BOM Editor");
         stage.setScene(scene);
         stage.show();
     }

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1197.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bom_editor.controllers.ConvertScreenFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1197.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bom_editor.controllers.ConvertScreenFXMLController">
    <children>
       <SplitPane dividerPositions="0.9" layoutX="494.0" layoutY="247.0" orientation="VERTICAL" prefHeight="827.0" prefWidth="1197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -23,9 +23,10 @@
                                 <columns>
                                   <TableColumn fx:id="itemCol" prefWidth="75.0" text="Item" />
                                   <TableColumn fx:id="refCol" prefWidth="279.0" text="Reference" />
-                                    <TableColumn fx:id="descriptionCol" prefWidth="372.0" text="Description" />
-                                    <TableColumn fx:id="packageCol" prefWidth="150.0" text="Package" />
-                                    <TableColumn fx:id="mpnCol" prefWidth="295.0" text="MPN" />
+                                    <TableColumn fx:id="descriptionCol" prefWidth="273.0" text="Description" />
+                                    <TableColumn fx:id="quantityCol" prefWidth="75.0" text="Quantity" />
+                                    <TableColumn fx:id="mpnCol" prefWidth="308.0" text="MPN" />
+                                    <TableColumn fx:id="packageCol" prefWidth="236.0" text="Package" />
                                 </columns>
                               </TableView>
                               <StackPane layoutX="-28.0" prefHeight="40.0" prefWidth="1193.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="0.0">
@@ -50,16 +51,17 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <HBox layoutX="275.0" layoutY="-21.0" prefHeight="79.0" prefWidth="1195.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox layoutX="275.0" layoutY="-21.0" prefHeight="79.0" prefWidth="1195.0" spacing="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="loadFile" mnemonicParsing="false" onAction="#loadFileAction" text="Load File">
+                        <Button fx:id="loadFile" mnemonicParsing="false" onAction="#loadFileAction" prefWidth="100.0" text="Load File">
                            <HBox.margin>
                               <Insets left="100.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="saveFileBtn" mnemonicParsing="false" onAction="#saveAction" text="Save" />
-                        <Button fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsAction" text="Save As" />
-                        <Button fx:id="createFileBtn" lineSpacing="10.0" mnemonicParsing="false" onAction="#createFileBtn" text="Create File" />
+                        <Button fx:id="saveFileBtn" mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="100.0" text="Save" />
+                        <Button fx:id="saveAsButton" mnemonicParsing="false" onAction="#saveAsAction" prefWidth="100.0" text="Save As" />
+                        <Button fx:id="createFileBtn" lineSpacing="10.0" mnemonicParsing="false" onAction="#createFileBtn" prefWidth="100.0" text="Create File" />
+                        <Button mnemonicParsing="false" onAction="#deleteRowBtn" prefWidth="100.0" text="Delete Row" />
                      </children>
                      <padding>
                         <Insets top="25.0" />
