@@ -28,7 +28,7 @@
                                     <TableColumn fx:id="mpnCol" prefWidth="295.0" text="MPN" />
                                 </columns>
                               </TableView>
-                              <StackPane layoutX="-2.0" prefHeight="40.0" prefWidth="1193.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <StackPane layoutX="-28.0" prefHeight="40.0" prefWidth="1193.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Label text="KiCad PCB BOM Converter">
                                        <font>

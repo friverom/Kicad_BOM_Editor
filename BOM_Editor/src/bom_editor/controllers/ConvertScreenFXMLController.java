@@ -5,7 +5,9 @@
  */
 package bom_editor.controllers;
 
+import bom_editor.common.BOM_List;
 import bom_editor.common.Parts;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -27,19 +31,23 @@ import javafx.scene.web.WebView;
  * @author Federico
  */
 public class ConvertScreenFXMLController implements Initializable {
-
+    
+    List<Parts> list = new ArrayList();
+    ObservableList observable_bom = FXCollections.observableList(list);
+    BOM_List bom_list = new BOM_List(list);
+    
     @FXML
-    private TableView<?> tablelist;
+    private TableView<Parts> tablelist;
     @FXML
-    private TableColumn<?, ?> itemCol;
+    private TableColumn<Parts, String> itemCol;
     @FXML
-    private TableColumn<?, ?> refCol;
+    private TableColumn<Parts, String> refCol;
     @FXML
-    private TableColumn<?, ?> descriptionCol;
+    private TableColumn<Parts, String> descriptionCol;
     @FXML
-    private TableColumn<?, ?> packageCol;
+    private TableColumn<Parts, String> packageCol;
     @FXML
-    private TableColumn<?, ?> mpnCol;
+    private TableColumn<Parts, String> mpnCol;
     @FXML
     private WebView webview;
     private WebEngine engine;
@@ -52,8 +60,7 @@ public class ConvertScreenFXMLController implements Initializable {
     @FXML
     private Button createFileBtn;
     
-    List<Parts> bom_list = new ArrayList();
-    ObservableList observable_bom = FXCollections.observableList(bom_list);
+    
 
     /**
      * Initializes the controller class.
@@ -66,6 +73,22 @@ public class ConvertScreenFXMLController implements Initializable {
 
     @FXML
     private void loadFileAction(ActionEvent event) {
+        //Open Dialog Window to select KiCad .csv file
+        FileChooser fc = new FileChooser();
+        File selectedFile = fc.showOpenDialog(null);
+        
+        //Create list of parts
+        bom_list.loadFile(selectedFile.toString());
+        
+        //Populate table
+        itemCol.setCellValueFactory(new PropertyValueFactory<Parts,String>("itemNumber"));
+        refCol.setCellValueFactory(new PropertyValueFactory<>("designator"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("partvalue"));
+        packageCol.setCellValueFactory(new PropertyValueFactory<>("packaging"));
+        mpnCol.setCellValueFactory(new PropertyValueFactory<>("mpn"));
+        
+        tablelist.getItems().setAll(observable_bom);
+        print_list(observable_bom);
     }
 
     @FXML
@@ -78,6 +101,18 @@ public class ConvertScreenFXMLController implements Initializable {
 
     @FXML
     private void createFileBtn(ActionEvent event) {
+    }
+    
+    public void print_list(ObservableList<Parts> list){
+    
+        for(int i=0;i<list.size();i++){
+            System.out.print(list.get(i).getitemNumber());
+            System.out.print(" "+list.get(i).getDesignator());
+            System.out.print(" "+list.get(i).getPackaging());
+            System.out.print(" "+list.get(i).getQuantity());
+            System.out.print(" "+list.get(i).getValue());
+            System.out.println(" "+list.get(i).getMpn());
+        }
     }
     
 }

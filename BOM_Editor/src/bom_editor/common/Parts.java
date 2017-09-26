@@ -5,6 +5,7 @@
  */
 package bom_editor.common;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -13,7 +14,9 @@ import javafx.beans.property.StringProperty;
  * @author Federico
  */
 public class Parts {
-
+    
+    private static int item=0;
+    private final SimpleStringProperty itemNumber; 
     private final SimpleStringProperty designator;
     private final SimpleStringProperty packaging;
     private final SimpleStringProperty quantity;
@@ -26,8 +29,26 @@ public class Parts {
         this.quantity= new SimpleStringProperty(quantity);
         this.partvalue= new SimpleStringProperty(partvalue);
         this.mpn=new SimpleStringProperty(mpn);
+        this.itemNumber= new SimpleStringProperty(String.valueOf(item++));
+        
+    }
+    
+    public Parts(){
+        this.designator= new SimpleStringProperty();
+        this.packaging= new SimpleStringProperty();
+        this.quantity= new SimpleStringProperty();
+        this.partvalue= new SimpleStringProperty();
+        this.mpn=new SimpleStringProperty();
+        this.itemNumber= new SimpleStringProperty(String.valueOf(item++));
+    }
+    
+     public String getitemNumber() {
+        return itemNumber.get();
     }
 
+    public StringProperty itemNumberProperty() {
+        return mpn;
+    }
     public String getMpn() {
         return mpn.get();
     }
